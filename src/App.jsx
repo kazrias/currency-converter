@@ -13,7 +13,7 @@ function App() {
       .then(res => res.json())
       .then(json => setRates(json.Valute))
       .then(() => setRates(prevState => {
-        let newState = Object.assign({}, prevState);
+        const newState = {...prevState};
         newState['RUB'] = {
           "ID": "R99999",
           "NumCode": "999",
@@ -30,15 +30,16 @@ function App() {
         alert('Не удалось получить информацию');
       })
   }, []);
+  console.log(rates);
   function onChangeFromValue(value) {
-    // if (!Object.keys(rates).length) return
+    if (!Object.keys(rates).length) return
     const result = +((rates[fromCurrency].Value / rates[toCurrency].Value) * value).toFixed(3)
     setFromValue(value);
     setToValue(result)
   }
 
   function onChangeToValue(value) {
-    // if (!Object.keys(rates).length) return
+    if (!Object.keys(rates).length) return
     const result = +((rates[toCurrency].Value / rates[fromCurrency].Value) * value).toFixed(3);
     setToValue(value);
     setFromValue(result);
@@ -48,9 +49,9 @@ function App() {
     onChangeFromValue(fromValue)
   }, [fromCurrency, fromValue])
 
-  // useEffect(() => {
-  //   onChangeToValue(toValue)
-  // }, [toCurrency, toValue])
+  useEffect(() => {
+    onChangeToValue(toValue)
+  }, [toCurrency, toValue])
   return (
     <div className="App">
       <Block onChangeCurrency={setFromCurrency} currency={fromCurrency} onChangeValue={onChangeFromValue} value={fromValue} />

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Block.scss'
 
-const defaultCurrency = ['RUB', 'USD', 'EUR', 'GBP'];
+const defaultCurrency = ['RUB','USD', 'EUR', 'GBP'];
 function Block({ onChangeCurrency, currency, onChangeValue, value, num }) {
   function checkValue(e) {
     if (e.target.value === '0')
