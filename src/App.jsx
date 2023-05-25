@@ -3,27 +3,11 @@ import './App.scss'
 import Block from './components/Block/Block'
 function App() {
   const [rates, setRates] = useState({});
-  const [fromCurrency, setFromCurrency] = useState('RUB');
-  const [toCurrency, setToCurrency] = useState('USD');
+  const [fromCurrency, setFromCurrency] = useState('USD');
+  const [toCurrency, setToCurrency] = useState('EUR');
   const [fromValue, setFromValue] = useState(0);
   const [toValue, setToValue] = useState(0);
-  function onChangeFromCurrency(cur) {
-    setFromCurrency(cur);
-  }
-  function onChangeToCurrency(cur) {
-    setToCurrency(cur);
-  }
 
-  function onChangeFromValue(value) {
-    const result = +((rates[fromCurrency].Value / rates[toCurrency].Value) * value).toFixed(3)
-    setFromValue(value);
-    setToValue(result)
-  }
-  function onChangeToValue(value) {
-    const result = +((rates[toCurrency].Value / rates[fromCurrency].Value) * value).toFixed(3);
-    setToValue(value);
-    setFromValue(result);
-  }
   useEffect(() => {
     fetch('https://www.cbr-xml-daily.ru/daily_json.js')
       .then(res => res.json())
@@ -45,13 +29,28 @@ function App() {
         console.warn(err);
         alert('Не удалось получить информацию');
       })
-  }, [])
-  console.log(rates);
+  }, []);
+  function onChangeFromValue(value) {
+    const result = +((rates[fromCurrency].Value / rates[toCurrency].Value) * value).toFixed(3)
+    setFromValue(value);
+    setToValue(result)
+  }
+
+  function onChangeToValue(value) {
+    const result = +((rates[toCurrency].Value / rates[fromCurrency].Value) * value).toFixed(3);
+    setToValue(value);
+    setFromValue(result);
+  }
+
+
+  // useEffect(() => {
+  //   onChangeFromValue(fromValue)
+  // }, [fromCurrency, fromValue])
   return (
     <div className="App">
-      <Block onChangeCurrency={onChangeFromCurrency} currency={fromCurrency} onChangeValue={onChangeFromValue} value={fromValue} />
+      <Block onChangeCurrency={setFromCurrency} currency={fromCurrency} onChangeValue={onChangeFromValue} value={fromValue} />
       <img src="/assets/arrows.svg" alt="" className="arrows" />
-      <Block onChangeCurrency={onChangeToCurrency} currency={toCurrency} onChangeValue={onChangeToValue} value={toValue} />
+      <Block onChangeCurrency={setToCurrency} currency={toCurrency} onChangeValue={onChangeToValue} value={toValue} />
     </div>
   )
 }
