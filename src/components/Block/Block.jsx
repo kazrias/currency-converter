@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './Block.scss'
 
 const defaultCurrency = ['RUB','USD', 'EUR', 'GBP'];
