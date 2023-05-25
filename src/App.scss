@@ -27,10 +27,14 @@ body {
     transform: rotate(90deg);
     margin: 10px 0;
   }
+  body{
+    height: auto;
+  }
   .App{
-    height: 100%;
+    height: 100vh;
     padding-top: 0;
     flex-direction: column;
   }
+
   
 }
