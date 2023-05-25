@@ -65,6 +65,12 @@
     background-color: #0D8F8B;
     color: #fff;
   }
-
-
+}
+@media(max-width:860px){
+  .block{
+    height: auto;
+    flex-basis: 200px;
+  }
+  
+  
 }

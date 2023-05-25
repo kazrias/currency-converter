@@ -30,7 +30,6 @@ function App() {
         alert('Не удалось получить информацию');
       })
   }, []);
-  console.log(rates);
   function onChangeFromValue(value) {
     if (!Object.keys(rates).length) return
     const result = +((rates[fromCurrency].Value / rates[toCurrency].Value) * value).toFixed(3)
@@ -55,7 +54,7 @@ function App() {
   return (
     <div className="App">
       <Block onChangeCurrency={setFromCurrency} currency={fromCurrency} onChangeValue={onChangeFromValue} value={fromValue} />
-      <img src="/assets/arrows.svg" alt="" className="arrows" />
+      <img src="./assets/arrows.svg" alt="" className="arrows" />
       <Block onChangeCurrency={setToCurrency} currency={toCurrency} onChangeValue={onChangeToValue} value={toValue} />
     </div>
   )
