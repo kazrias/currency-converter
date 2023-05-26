@@ -63,16 +63,16 @@ function App() {
 
   function onChangeFromValue(value) {
     if (!Object.keys(rates).length) return
-    console.log('1',fromCurrency,'=',rates[fromCurrency].Value),'RUB';
-    console.log('1',toCurrency,'=',rates[toCurrency].Value),'RUB';
-    const result = +((rates[fromCurrency].Value / rates[toCurrency].Value) * value).toFixed(3)
+    console.log('1', fromCurrency, '=', rates[fromCurrency].Value), 'RUB';
+    console.log('1', toCurrency, '=', rates[toCurrency].Value), 'RUB';
+    const result = +(((rates[fromCurrency].Value / rates[fromCurrency].Nominal) / (rates[toCurrency].Value / rates[toCurrency].Nominal)) * value).toFixed(3)
     setFromValue(value);
     setToValue(result)
   }
 
   function onChangeToValue(value) {
     if (!Object.keys(rates).length) return
-    const result = +((rates[toCurrency].Value / rates[fromCurrency].Value) * value).toFixed(3);
+    const result = +(((rates[toCurrency].Value / rates[toCurrency].Nominal) / (rates[fromCurrency].Value / rates[fromCurrency].Nominal)) * value).toFixed(3);
     setToValue(value);
     setFromValue(result);
   }
