@@ -63,8 +63,6 @@ function App() {
 
   function onChangeFromValue(value) {
     if (!Object.keys(rates).length) return
-    console.log('1', fromCurrency, '=', rates[fromCurrency].Value), 'RUB';
-    console.log('1', toCurrency, '=', rates[toCurrency].Value), 'RUB';
     const result = +(((rates[fromCurrency].Value / rates[fromCurrency].Nominal) / (rates[toCurrency].Value / rates[toCurrency].Nominal)) * value).toFixed(3)
     setFromValue(value);
     setToValue(result)
@@ -93,7 +91,6 @@ function App() {
     const indexOfCurrency = currentToFour.indexOf(toCurrency)
     const temp = tempFourState[indexOfCurrency];
     tempFourState[indexOfCurrency] = tempHiddenState[i];
-    console.log(tempHiddenState[i]);
     tempHiddenState[i] = temp;
     setCurrentToFour(tempFourState);
     setHiddenToList(tempHiddenState);
