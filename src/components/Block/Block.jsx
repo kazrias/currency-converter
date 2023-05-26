@@ -16,11 +16,11 @@ function Block({ onClickHiddenList, hiddenList, currentFour, onChangeCurrency, c
   useEffect(() => {
     let handler = (e) => {
       if (!hiddenMenuRef.current.contains(e.target)) {
-        setListIsActive(false); console.log(hiddenMenuRef.current);
+        setListIsActive(false);
       }
     }
     document.addEventListener('mousedown', handler)
-    return()=>{
+    return () => {
       document.removeEventListener('mousedown', handler)
     }
   }, [])
