@@ -3,11 +3,12 @@
 .block {
   background-color: white;
   flex-basis: 500px;
-  min-height: 250px;
+  height: 250px;
   font-family: 'Inter', sans-serif;
   padding: 25px;
   border-radius: 10px;
   border: 1px solid #ccc;
+  position: relative;
 
   &-input {
     display: block;
@@ -32,6 +33,7 @@
   }
 }
 
+
 .currencies {
   list-style: none;
   display: flex;
@@ -40,7 +42,7 @@
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 30px;
-  flex-wrap: wrap;
+
   &-item {
     flex: 1;
     display: flex;
@@ -66,11 +68,67 @@
     color: #fff;
   }
 }
-@media(max-width:860px){
-  .block{
+
+.all-currencies {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.hidden-currencies {
+  &__wrapper {
+    background-color: #fff;
+    position: absolute;
+    top: 70px;
+    right: 25px;
+    width: 330px;
+    overflow: scroll;
+    overflow-x: hidden;
+    border-radius: 10px;
+    max-height: 100px;
+    box-shadow: 1px 5px 12px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 1px 5px 12px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 5px 12px 0px rgba(0, 0, 0, 0.75);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity .5s;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity .5s;
+    display: flex;
+    flex-wrap: wrap;
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__list-item {
+    background-color: #fff;
+    text-align: center;
+    flex-basis: 50px;
+    transition: all .2s;
+    cursor: pointer;
+    &:hover {
+      background-color: #2c8c9d2d;
+    }
+  }
+}
+
+@media(max-width:860px) {
+  .block {
     height: auto;
     flex-basis: 200px;
   }
-  
-  
 }
