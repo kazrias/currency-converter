@@ -32,25 +32,25 @@ function App() {
   }, []);
   function onChangeFromValue(value) {
     if (!Object.keys(rates).length) return
-    const result = +((rates[fromCurrency].Value / rates[toCurrency].Value) * value).toFixed(3)
+    const result = +((rates[fromCurrency].Value / rates[toCurrency].Value) * value).toFixed(1)
     setFromValue(value);
     setToValue(result)
   }
 
   function onChangeToValue(value) {
     if (!Object.keys(rates).length) return
-    const result = +((rates[toCurrency].Value / rates[fromCurrency].Value) * value).toFixed(3);
+    const result = +((rates[toCurrency].Value / rates[fromCurrency].Value) * value).toFixed(1);
     setToValue(value);
     setFromValue(result);
   }
 
   useEffect(() => {
     onChangeFromValue(fromValue)
-  }, [fromCurrency, fromValue])
+  }, [fromCurrency])
 
   useEffect(() => {
     onChangeToValue(toValue)
-  }, [toCurrency, toValue])
+  }, [toCurrency])
   return (
     <div className="App">
       <Block onChangeCurrency={setFromCurrency} currency={fromCurrency} onChangeValue={onChangeFromValue} value={fromValue} />

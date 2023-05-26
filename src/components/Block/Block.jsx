@@ -1,6 +1,6 @@
 import './Block.scss'
 
-const defaultCurrency = ['RUB','USD', 'EUR', 'GBP'];
+const defaultCurrency = ['RUB', 'USD', 'EUR', 'GBP'];
 function Block({ onChangeCurrency, currency, onChangeValue, value, num }) {
   function checkValue(e) {
     if (e.target.value === '0')
@@ -19,7 +19,7 @@ function Block({ onChangeCurrency, currency, onChangeValue, value, num }) {
           ))
         }
       </ul>
-      <input onClick={checkValue} onChange={(e) => onChangeValue(e.target.value)} value={value} className='block-input' type="number" />
+      <input onClick={checkValue} onChange={(e) => { checkValue; onChangeValue(e.target.value) }} value={value} className='block-input' type="number" />
     </div>
   )
 }
