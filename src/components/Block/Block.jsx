@@ -27,7 +27,7 @@ function Block({ onClickHiddenList, hiddenList, currentFour, onChangeCurrency, c
   return (
     <>
       {
-        currentFour.filter(item => item !== undefined).length > 0 && (<div className={`block block-${num}`}>
+        currentFour.filter(item => item !== undefined).length > 0 && (<div className='block'>
           <ul className="currencies">
             {
               currentFour.map((cur) => (

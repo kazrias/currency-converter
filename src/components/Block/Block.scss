@@ -86,7 +86,6 @@
     width: 330px;
     overflow: scroll;
     overflow-x: hidden;
-    border-radius: 10px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     max-height: 100px;
@@ -131,6 +130,7 @@
     &:nth-child(6n+1) {
       border-left: 1px solid #0D8F8B;
     }
+
     &:nth-last-child(-n+6) {
       border-bottom: 1px solid #0D8F8B;
     }
@@ -146,4 +146,33 @@
     height: auto;
     flex-basis: 200px;
   }
+}
+
+@media(max-width:400px) {
+  .currencies-item {
+    padding: 0;
+  }
+
+  .hidden-currencies {
+    &__wrapper {
+      width: 260px;
+    }
+    &__list-item{
+      &:nth-child(6n+1) {
+        border-left: none
+      }
+  
+      &:nth-last-child(-n+6) {
+        border-bottom: none
+      }
+      &:nth-child(5n+1) {
+        border-left: 1px solid #0D8F8B;
+      }
+  
+      &:nth-last-child(-n+5) {
+        border-bottom:  1px solid #0D8F8B;
+      }
+    }
+  }
+
 }
